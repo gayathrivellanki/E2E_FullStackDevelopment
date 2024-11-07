@@ -1,0 +1,9 @@
+.header-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

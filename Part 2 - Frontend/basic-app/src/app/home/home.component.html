@@ -1,0 +1,52 @@
+<div class="m-3">
+  <div class="header-row">
+    <h2 class="m-0">Home Screen</h2>
+    <div class="actions">
+      <button type="button" class="btn btn-link" (click)="addUser()">Add User</button>
+      <button type="button" class="btn btn-link" (click)="searchUsers()">Search Users</button>
+    </div>
+  </div>
+
+  <hr />
+
+  @if(loading) {
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  }
+
+  @if(!loading) {
+  @if(errorMessage.length > 0) {
+  <div class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  } @else if (users.length === 0) {
+  <div class="alert alert-warning">
+    No users found
+  </div>
+  } @else if (users.length >= 0) {
+  <table class="table table-striped table-hover table-border table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Account Id</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users; track user.id) {
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.accountId }}</td>
+        <td>{{ user.address }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+  }
+</div>

@@ -1,0 +1,131 @@
+<div class="m-3">
+  <div>
+    <nav
+      style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+      aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Create</li>
+      </ol>
+    </nav>
+    <h2 class="m-0">Create a User</h2>
+  </div>
+  <hr />
+
+  <form (formGroup)="userForm" class="m-3">
+
+    @if (userCreated) {
+    <div class="alert alert-success" role="alert">
+      User created successfully!
+    </div>
+    }
+
+    @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">
+      {{errorMessage}}
+    </div>
+    }
+
+    <div class="form-row">
+      <div class="mb-3 form-row-child">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="John"
+          (input)="onInputChange($event, 'firstName')" [value]="userForm.firstName" />
+        @if (userFormErrors.firstName.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.firstName}}</small>
+        }
+      </div>
+
+      <div class="mb-3 form-row-child">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Doe"
+          (input)="onInputChange($event, 'lastName')" [value]="userForm.lastName" />
+        @if (userFormErrors.lastName.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.lastName}}</small>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="accountId" class="form-label">Account Id</label>
+      <input type="text" class="form-control" id="accountId" placeholder="AXXXXXXXXX"
+        (input)="onInputChange($event, 'accountId')" [value]="userForm.accountId" />
+      @if (userFormErrors.accountId.length > 0) {
+      <small class="ms-1 ps-1 text-danger">{{userFormErrors.accountId}}</small>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="mb-3 form-row-child">
+        <label for="line1" class="form-label">Line 1</label>
+        <input type="text" class="form-control" id="line1" placeholder="123 Main St"
+          (input)="onInputChange($event, 'line1')" [value]="userForm.line1" />
+        @if (userFormErrors.line1.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.line1}}</small>
+        }
+      </div>
+
+      <div class="mb-3 form-row-child">
+        <label for="line2" class="form-label">Line 2</label>
+        <input type="text" class="form-control" id="line2" placeholder="Apt 123"
+          (input)="onInputChange($event, 'line2')" [value]="userForm.line2" />
+        @if (userFormErrors.line2.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.line2}}</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="mb-3 form-row-child">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" placeholder="San Francisco"
+          (input)="onInputChange($event, 'city')" [value]="userForm.city" />
+        @if (userFormErrors.city.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.city}}</small>
+        }
+      </div>
+
+      <div class="mb-3 form-row-child">
+        <label for="state" class="form-label">State</label>
+        <input type="text" class="form-control" id="state" placeholder="CA" (input)="onInputChange($event, 'state')"
+          [value]="userForm.state" />
+        @if (userFormErrors.state.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.state}}</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="mb-3 form-row-child">
+        <label for="zip" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="zip" placeholder="94107" (input)="onInputChange($event, 'zip')"
+          [value]="userForm.zip" />
+        @if (userFormErrors.zip.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.zip}}</small>
+        }
+      </div>
+
+      <div class="mb-3 form-row-child">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" placeholder="USA"
+          (input)="onInputChange($event, 'country')" [value]="userForm.country" />
+        @if (userFormErrors.country.length > 0) {
+        <small class="ms-1 ps-1 text-danger">{{userFormErrors.country}}</small>
+        }
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mb-5" [disabled]="submitting" (click)="onSubmit()">
+      @if (submitting) {
+      <div class="spinner-border text-light spinner-grow-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      }
+      Save
+    </button>
+
+    <button type="button" class="btn btn-outline-dark ms-3 mb-5" [disabled]="submitting" (click)="resetForm()">
+      Reset
+    </button>
+  </form>
+</div>

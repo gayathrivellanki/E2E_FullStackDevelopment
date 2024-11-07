@@ -1,0 +1,14 @@
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.search-input {
+  flex-grow: 1;
+}
+
+.search-button {
+  margin-top: auto;
+  margin-bottom: 26px;
+}
